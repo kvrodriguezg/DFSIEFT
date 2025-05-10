@@ -70,4 +70,18 @@ public class UsuarioRepositoryTest {
         assertEquals("Laura Soto Perez", resultado.get().getNombre());
         assertEquals("+56987654321", resultado.get().getTelefono());
     }
+
+    
+    // Prueba para crear un usuario
+    @Test
+    void testCrearUsuario() {
+        Usuario nuevoUsuario = new Usuario(null, "Carlos Díaz", "carlos@gmail.com", "11222333-4", "+56999887766",
+                "Los Olmos 123", "clave123", "Firulais");
+
+        Usuario resultado = usuarioRepository.save(nuevoUsuario);
+
+        assertNotNull(resultado.getId()); //Verificar que se haya generado un id y no sea nulo
+        assertEquals("Carlos Díaz", resultado.getNombre());
+        assertEquals("carlos@gmail.com", resultado.getEmail());
+    }
 }
